@@ -69,3 +69,7 @@ https://github.com/samedan/2409_laravel10_InertiaJS_React
 
 > Send message in PostController(destroy) ->with('message')
 > retrieve message in Home.jsx const { flash } = usePage().props;
+
+### Stronger Password
+
+> RegisteredUserController.php rules()

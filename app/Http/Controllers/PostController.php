@@ -6,6 +6,7 @@ use App\Models\Post;
 // use App\Http\Requests\StorePostRequest;
 // use App\Http\Requests\UpdatePostRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -32,9 +33,12 @@ class PostController extends Controller
     public function store(Request $request)
     {
         // sleep(2);
+        $user = Auth::user();
         $fields = $request->validate([
             "body" => ['required', 'min:3']
         ]);
+        $fields['author'] = $user->id;
+        // dd($fields);
         Post::create($fields);
         // dd($request);
         return redirect('/posts');

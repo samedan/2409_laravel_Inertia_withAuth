@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TopicController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -36,6 +37,7 @@ Route::get('/about', function () {
     // return Inertia::render('Home');
 })->middleware(['auth', 'verified'])->name('about');
 
+// POSTS
 Route::get('/posts',[PostController::class, 'index'])->middleware(['auth', 'verified'])->name('posts');
 Route::get('/posts/create',[PostController::class, 'create'])->middleware(['auth', 'verified'])->name('posts.create');
 Route::post('/posts',[PostController::class, 'store'])->middleware(['auth', 'verified'])->name('posts.store');
@@ -44,7 +46,9 @@ Route::get('/posts/{post}/edit',[PostController::class, 'edit'])->middleware(['a
 Route::put('/posts/{post}',[PostController::class, 'update'])->middleware(['auth', 'verified'])->name('posts.update');
 Route::delete('/posts/{post}',[PostController::class, 'destroy'])->middleware(['auth', 'verified'])->name('posts.destroy');
 
-
+// TOPICS
+Route::get('/topics',[TopicController::class, 'index'])->middleware(['auth', 'verified'])->name('topics');
+Route::get('/topics/create',[TopicController::class, 'create'])->middleware(['auth', 'verified'])->name('topics.create');
 
 // Route::get('/posts',[PostController::class, 'index']);
 
